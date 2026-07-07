@@ -8,8 +8,13 @@ st.set_page_config(
 )
 
 st.title("🍷 Wine Quality Prediction")
+import os
+import joblib
 
-model = joblib.load("wine_model.pkl")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "wine_model.pkl")
+
+model = joblib.load(MODEL_PATH)
 
 fixed_acidity = st.number_input("Fixed Acidity", 0.0, 20.0, 7.4)
 volatile_acidity = st.number_input("Volatile Acidity", 0.0, 2.0, 0.70)
